@@ -2,9 +2,9 @@
 
 :root {
   --font-color: white;
-  --main-color: #005689;
-  --secondary-color: #007cb9;
-  --third-color: #d5eeff;
+  --main-color: #118a7e;
+  --secondary-color: #3baea0;
+  --third-color: #93e4c1;
   --mrg: 1rem;
   --pdg-v: 0.5rem;
   --pdg-h: 1rem;
@@ -48,23 +48,25 @@ button:active {
   display: grid;
   grid-template-rows: 100px 1fr;
   grid-template-columns: 200px 1fr;
+  grid-template-areas: 
+  "title title"
+  ". .";
+}
+
+.content > div {
+  box-shadow: inset 8px 8px 100px -20px  rgb(165, 162, 226);
 }
 
 .title {
-  background-color: var(--main-color);
-  box-shadow: inset 8px 8px 38px 0px rgba(66, 68, 90, 1);
-  display: grid;
-  place-items: center;
-}
-
-.header {
-  background-color: var(--secondary-color);
-  box-shadow: inset 8px 8px 38px 0px rgba(66, 68, 90, 1);
+  grid-area: title;
+  background: url(/src/assets/images/forest.jpg);
+  display: flex;
+  align-items: center;
+  padding: calc(3 * var(--pdg-h));
 }
 
 .menu {
   background-color: var(--secondary-color);
-  box-shadow: inset 8px 8px 38px 0px rgba(66, 68, 90, 1);
   padding-top: var(--pdg-v);
   display: flex;
   flex-direction: column;
@@ -75,7 +77,6 @@ button:active {
 
 .table {
   background-color: var(--third-color);
-  box-shadow: inset 8px 8px 38px 0px rgba(66, 68, 90, 1);
   padding: var(--pdg-h);
 }
 
