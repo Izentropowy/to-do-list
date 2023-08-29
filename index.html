@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <script src="https://kit.fontawesome.com/8b5c5c4a88.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="content">
+        <div class="title">
+            <i class="fa-solid fa-clipboard main-icon"></i>
+            <h1>ToDo</h1>
+        </div>
+        <div class="header"></div>
+        <div class="menu">
+            <button class=""><i class="fa-solid fa-plus"></i>&ensp;Add project</button>
+        </div>
+        <div class="table">Table</div>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <form>
+                <div class="textareas">
+                    <label for="title">Title</label>
+                    <textarea type="text" id="title" name="title" rows="1" placeholder="Project title"></textarea>
+                    <label for="details">Details</label>
+                    <textarea id="details" name="details" rows="10" placeholder="Notes here..."></textarea>
+                </div>
+                <div class="date">
+                    <label for="date">Due date:</label>
+                    <input type="date" id="date" name="date" value="2024-01-01"/>
+                </div>
+                <div class="priorities">
+                    <label for="priority">Priority:</label>
+                    <button class="priority-btn" id="low-priority" type="priority">Low</button>
+                    <button class="priority-btn" id="medium-priority" type="priority">Medium</button>
+                    <button class="priority-btn" id="high-priority" type="priority">High</button>
+                </div>
+                <button class="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
