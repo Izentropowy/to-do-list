@@ -2,9 +2,9 @@
 
 :root {
   --font-color: white;
-  --main-color: #118a7e;
-  --secondary-color: #3baea0;
-  --third-color: #93e4c1;
+  --main-color: #113f67;
+  --secondary-color: #38598b;
+  --third-color: #f4f5ff;
   --mrg: 1rem;
   --pdg-v: 0.5rem;
   --pdg-h: 1rem;
@@ -22,6 +22,10 @@ html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   color: var(--font-color);
+  background: url(/src/assets/images/ocean.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 button {
@@ -53,20 +57,19 @@ button:active {
   ". .";
 }
 
-.content > div {
-  box-shadow: inset 8px 8px 100px -20px  rgb(165, 162, 226);
-}
-
 .title {
   grid-area: title;
-  background: url(/src/assets/images/forest.jpg);
+  background-color: var(--main-color);
+  box-shadow: 5px 5px 10px 10px var(--main-color);
   display: flex;
   align-items: center;
   padding: calc(3 * var(--pdg-h));
 }
 
 .menu {
+  opacity: 0.8;
   background-color: var(--secondary-color);
+  box-shadow: 5px 5px 10px 10px var(--secondary-color);
   padding-top: var(--pdg-v);
   display: flex;
   flex-direction: column;
@@ -76,12 +79,22 @@ button:active {
 }
 
 .table {
-  background-color: var(--third-color);
   padding: var(--pdg-h);
 }
 
+.card {
+  background-color: var(--third-color);
+  color: var(--main-color);
+  margin: var(--mrg);
+  padding: var(--pdg-v) var(--pdg-h);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modal {
-  display: none; /* Hidden by default */
+  display: grid; /* Hidden by default */
   place-items: center;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -148,3 +161,5 @@ textarea {
 .is-blurred {
   filter: blur(2px);
 }
+
+
