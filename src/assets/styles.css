@@ -60,7 +60,7 @@ button:active {
 .title {
   grid-area: title;
   background-color: var(--main-color);
-  box-shadow: 5px 5px 10px 10px var(--main-color);
+  box-shadow: 1px 1px 4px 1px var(--main-color);
   display: flex;
   align-items: center;
   padding: calc(3 * var(--pdg-h));
@@ -69,13 +69,19 @@ button:active {
 .menu {
   opacity: 0.8;
   background-color: var(--secondary-color);
-  box-shadow: 5px 5px 10px 10px var(--secondary-color);
+  box-shadow: 1px 1px 4px 1px var(--secondary-color);
   padding-top: var(--pdg-v);
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--pdg-v);
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.menu > * {
+  margin-left: var(--mrg);
 }
 
 .table {
@@ -173,7 +179,6 @@ textarea {
   margin: 0 auto;
   width: 50%;
 }
-
 
 .is-blurred {
   filter: blur(2px);
