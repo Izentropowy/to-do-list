@@ -82,6 +82,20 @@ button:active {
 
 .menu > * {
   margin-left: var(--mrg);
+  margin-right: var(--mrg);
+}
+
+.projects {
+  display:flex;
+  flex-direction: column;
+  gap: var(--mrg);
+}
+
+.project-btn {
+  color: var(--font-color);
+  background-color: var(--main-color);
+  border-radius: 15px;
+  font-weight: 800;
 }
 
 .table {
@@ -109,7 +123,7 @@ button:active {
   padding: 0;
 }
 
-.modal {
+.task-modal, .project-modal {
   display: none; /* Hidden by default */
   place-items: center;
   position: fixed; /* Stay in place */

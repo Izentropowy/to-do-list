@@ -15,8 +15,9 @@
         </div>
         <div class="menu">
             <h3>Projects</h3>
-            <br>
             <div class="projects">
+                <button class="project-btn">Project 1</button>
+                <button class="project-btn">Extremely long named project</button>
             </div>
             <button class="add-project"><i class="fa-solid fa-plus"></i>&ensp;Add project</button>
         </div>
@@ -29,29 +30,42 @@
                     <button><i class="fa-solid fa-trash"></i></button>
                 </div>
             </div>
+            <button class="add-task"><i class="fa-solid fa-plus"></i>&ensp;Add task</button>
         </div>
     </div>
-    <div class="modal">
+    <div class="task-modal">
         <div class="modal-content">
-            <form>
-                <button class="close-button"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>
+            <form class="task-form">
+                <button class="close-button" type="button"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>
                 <div class="textareas">
                     <label for="title">Title</label>
-                    <textarea type="text" id="title" name="title" rows="1" placeholder="Project title"></textarea>
+                    <textarea type="text" id="task-title" name="title" rows="1" placeholder="Task title" required></textarea>
                     <label for="details">Details</label>
-                    <textarea id="details" name="details" rows="10" placeholder="Notes here..."></textarea>
+                    <textarea id="details" name="details" rows="10" placeholder="Notes here..." required></textarea>
                 </div>
                 <div class="date">
                     <label for="date">Due date:</label>
-                    <input type="date" id="date" name="date" value="2024-01-01"/>
+                    <input type="date" id="date" name="date" value="2024-01-01" required/>
                 </div>
                 <div class="priorities">
                     <label for="priority">Priority:</label>
-                    <button class="priority-btn" id="low-priority" type="priority">Low</button>
-                    <button class="priority-btn" id="medium-priority" type="priority">Medium</button>
-                    <button class="priority-btn" id="high-priority" type="priority">High</button>
+                    <button class="priority-btn" id="low-priority" type="button">Low</button>
+                    <button class="priority-btn" id="medium-priority" type="button">Medium</button>
+                    <button class="priority-btn" id="high-priority" type="button">High</button>
                 </div>
-                <button class="submit">Add</button>   
+                <button class="submit task-submit" type="button">Add</button>   
+            </form>
+        </div>   
+    </div>
+    <div class="project-modal">
+        <div class="modal-content">
+            <form class="project-form">
+                <button class="close-button" type="button"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>
+                <div class="textareas">
+                    <label for="title">Title</label>
+                    <textarea type="text" id="project-title" name="title" rows="1" placeholder="Project title" required></textarea>
+                </div>
+                <button class="submit project-submit" type="button">Add</button>   
             </form>
         </div>   
     </div>
