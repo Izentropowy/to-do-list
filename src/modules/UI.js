@@ -14,6 +14,7 @@ const dom = (() => {
     const taskModal = document.querySelector('.task-modal');
     const projectModal = document.querySelector('.project-modal');
     const projectForm = document.querySelector('.project-form');
+    const projectsDiv = document.querySelector('.projects');
 
     function toggleTaskModal() {
         taskModal.style.display = getComputedStyle(taskModal).display == 'none' ? 'grid' : 'none';
@@ -38,11 +39,23 @@ const dom = (() => {
             return false;
         }
     }
+
+    function displayProjects(projects) {
+        projectsDiv.innerHTML = "";
+        projects.forEach(project => {
+            const newButton = document.createElement("button");
+            newButton.classList.add('project-btn');
+            newButton.textContent = project.title;
+            projectsDiv.appendChild(newButton);
+        });
+    }
+
     return {
         toggleTaskModal,
         toggleProjectModal,
         closeModals,
         addProject,
+        displayProjects,
     }
 })();
 

@@ -16,6 +16,7 @@ const events = (()=> {
         console.log(projects.getProjectsList());
         if (isProjectAdded) {
             dom.toggleProjectModal();
+            dom.displayProjects(projects.getProjectsList());
         }
     });
 
