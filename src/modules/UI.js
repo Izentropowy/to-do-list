@@ -33,7 +33,7 @@ const dom = (() => {
         if (projectForm.reportValidity()){
             const title = document.getElementById('project-title').value;
             projects.projectsAppend(title);
-            return true;
+            return title;
         }
         else {
             return false;

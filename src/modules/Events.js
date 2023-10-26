@@ -1,28 +1,43 @@
 import dom from './UI';
 import { projects } from './projectsManager';
 
-const events = (()=> {
-    const addTaskButton = document.querySelector('.add-task');
-    const addProjectButton = document.querySelector('.add-project');
-    const closeModalButtons = document.querySelectorAll('.fa-x');
-    const projectFormSubmit = document.querySelector('.project-submit');
+const events = (() => {
 
-    addTaskButton.addEventListener('click', dom.toggleTaskModal);
+    function listenClicks() {
 
-    addProjectButton.addEventListener('click', dom.toggleProjectModal);
+        document.addEventListener('click', e => {
+            let target = e.target.getAttribute("class");
 
-    projectFormSubmit.addEventListener('click', () => {
-        const isProjectAdded = dom.addProject();
-        console.log(projects.getProjectsList());
-        if (isProjectAdded) {
-            dom.toggleProjectModal();
-            dom.displayProjects(projects.getProjectsList());
-        }
-    });
+            // addTask
+            if (target.includes('add-task')) {
+                dom.toggleTaskModal();
+            }
 
-    closeModalButtons.forEach(element => {
-        element.addEventListener('click', dom.closeModals);
-    });
+            // addProject
+            if (target.includes('add-project')) {
+                dom.toggleProjectModal();
+            }
+
+            // closeModal
+            if (target.includes('fa-x')) {
+                dom.closeModals();
+            }
+
+            // projectFormSubmit
+            if (target.includes('project-submit')) {
+                const projectTitle = dom.addProject();
+
+                if (projectTitle) {
+                    dom.toggleProjectModal();
+                    dom.displayProjects(projects.getProjectsList());
+                }
+            }
+        })
+    }
+
+    return {
+        listenClicks,
+    }
 })();
 
-export default events
+export default events;
