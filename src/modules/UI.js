@@ -1,15 +1,6 @@
 import DOMPurify from 'dompurify';
 import { projects } from './projectsManager';
 
-// function appendProjects(name) {
-//     const projects = document.querySelector('.projects');
-//     const sanitizedName = DOMPurify.sanitize(name);
-
-//     projects.innerHTML += `<button class="project-btn">${sanitizedName}</button>`;
-
-//     return projects;
-// }
-
 const dom = (() => {
     const taskModal = document.querySelector('.task-modal');
     const projectModal = document.querySelector('.project-modal');
@@ -40,14 +31,22 @@ const dom = (() => {
         }
     }
 
-    function displayProjects(projects) {
+    function createProject(title) {
+        const sanitizedTitle = DOMPurify.sanitize(title);
+
+        const newP = document.createElement('div');
+        newP.classList.add('project');
+        newP.innerHTML = `
+        <button class="project-btn">${sanitizedTitle}</button>
+        <button><i class="fa-solid fa-trash"></i></button>
+        `
+        return newP;
+    }
+
+    function displayProjects() {
+        let list = projects.getProjectsList();
         projectsDiv.innerHTML = "";
-        projects.forEach(project => {
-            const newButton = document.createElement("button");
-            newButton.classList.add('project-btn');
-            newButton.textContent = project.title;
-            projectsDiv.appendChild(newButton);
-        });
+        list.forEach(project => projectsDiv.appendChild(createProject(project.getTitle())));
     }
 
     return {
@@ -55,6 +54,7 @@ const dom = (() => {
         toggleProjectModal,
         closeModals,
         addProject,
+        createProject,
         displayProjects,
     }
 })();

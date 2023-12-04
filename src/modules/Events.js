@@ -8,6 +8,10 @@ const events = (() => {
         document.addEventListener('click', e => {
             let target = e.target.getAttribute("class");
 
+            if (!target) {
+                return
+            }
+
             // addTask
             if (target.includes('add-task')) {
                 dom.toggleTaskModal();
@@ -25,12 +29,18 @@ const events = (() => {
 
             // projectFormSubmit
             if (target.includes('project-submit')) {
-                const projectTitle = dom.addProject();
+                let title = document.getElementById('project-title').value;
 
-                if (projectTitle) {
-                    dom.toggleProjectModal();
-                    dom.displayProjects(projects.getProjectsList());
-                }
+                projects.projectsAppend(title);
+                dom.createProject(title);
+                dom.displayProjects();
+                dom.closeModals();
+            }
+
+            // activeProject
+            if (target.includes('project-btn')) {
+                console.log(e.target);
+                console.log(projects.getProjectsList());
             }
         })
     }
