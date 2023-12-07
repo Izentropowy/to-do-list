@@ -39,8 +39,14 @@ const events = (() => {
 
             // activeProject
             if (target.includes('project-btn')) {
-                console.log(e.target);
-                console.log(projects.getProjectsList());
+                let title = e.target.id;
+                let project = projects.getProject(title);
+                let oldActive = projects.getActiveProject();
+                if (oldActive != undefined) {
+                    oldActive.updateActive();
+                }
+                project.updateActive();
+                console.log(projects.getActiveProject());
             }
         })
     }

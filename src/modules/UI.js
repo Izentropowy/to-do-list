@@ -37,7 +37,7 @@ const dom = (() => {
         const newP = document.createElement('div');
         newP.classList.add('project');
         newP.innerHTML = `
-        <button class="project-btn">${sanitizedTitle}</button>
+        <button class="project-btn" id="${sanitizedTitle}">${sanitizedTitle}</button>
         <button><i class="fa-solid fa-trash"></i></button>
         `
         return newP;
@@ -46,7 +46,7 @@ const dom = (() => {
     function displayProjects() {
         let list = projects.getProjectsList();
         projectsDiv.innerHTML = "";
-        list.forEach(project => projectsDiv.appendChild(createProject(project.getTitle())));
+        list.forEach(project => projectsDiv.appendChild(createProject(project.title)));
     }
 
     return {

@@ -9,26 +9,26 @@ export const task = (title, details, date, priority) => {
 }
 
 export const project = (title) => {
-    let projectTitle = title;
     let tasks = [];
-    let active = 0;
-
-    function getTitle() {
-        return projectTitle;
-    }
+    let active = false;
 
     function getTasks() {
         return tasks;
     }
 
-    function isActive() {
-        return tasks;
+    function getActive() {
+        return active;
+    }
+
+    function updateActive() {
+        active = !active; 
     }
 
     return {
-        getTitle,
+        title,
         getTasks,
-        isActive,
+        getActive,
+        updateActive,
     }
 }
 
@@ -44,13 +44,19 @@ export const projects = (() => {
         return projectsList
     }
 
-    function setActiveProject(project) {
+    function getProject(title) {
+        return projectsList.find(project => project.title === title);
+    }
 
+    function getActiveProject() {
+        return projectsList.find(project => project.getActive() === true);
     }
 
     return {
         projectsAppend,
         getProjectsList,
+        getActiveProject,
+        getProject,
     }
 })();
 
