@@ -1,7 +1,11 @@
 import dom from './UI';
 import { projects } from './projectsManager';
 
+
+
 const events = (() => {
+
+    const priorityButtons = document.querySelectorAll('.priority-btn');
 
     function listenClicks() {
 
@@ -46,7 +50,26 @@ const events = (() => {
                     oldActive.updateActive();
                 }
                 project.updateActive();
-                console.log(projects.getActiveProject());
+                dom.displayTasks();
+            }
+
+            // priorityButton
+            if (target.includes('priority-btn')) {
+                Array.from(priorityButtons).forEach(btn => btn.classList.remove('priority-active'));
+                e.target.classList.add('priority-active');
+            }
+
+            // taskFormSubmit
+            if (target.includes('task-submit')) {
+                let title = document.getElementById('task-title').value;
+                let details = document.getElementById('details').value;
+                let date = document.getElementById('date').value;
+                let priority = document.querySelector('.priority-active').id;
+
+                projects.getActiveProject().tasksAppend(title, details, date, priority);
+                dom.createTask(title);
+                dom.displayTasks();
+                dom.closeModals();
             }
         })
     }

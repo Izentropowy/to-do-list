@@ -2,9 +2,9 @@
 
 :root {
   --font-color: white;
-  --main-color: #113f67;
-  --secondary-color: #38598b;
-  --third-color: #f4f5ff;
+  --main-color: #352f44; 
+  --secondary-color: #5c5470;
+  --third-color:  #dbd8e3;
   --mrg: 1rem;
   --pdg-v: 0.5rem;
   --pdg-h: 1rem;
@@ -22,7 +22,7 @@ html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   color: var(--font-color);
-  background: url(/src/assets/images/ocean.jpg);
+  background: url(/src/assets/images/todoimg.jpg);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -203,6 +203,10 @@ textarea {
 
 .is-blurred {
   filter: blur(2px);
+}
+
+.priority-active {
+  font-weight: bold;
 }
 
 

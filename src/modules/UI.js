@@ -6,6 +6,7 @@ const dom = (() => {
     const projectModal = document.querySelector('.project-modal');
     const projectForm = document.querySelector('.project-form');
     const projectsDiv = document.querySelector('.projects');
+    const tasksDiv = document.querySelector('.tasks');
 
     function toggleTaskModal() {
         taskModal.style.display = getComputedStyle(taskModal).display == 'none' ? 'grid' : 'none';
@@ -43,10 +44,33 @@ const dom = (() => {
         return newP;
     }
 
+    function createTask(title) {
+        const sanitizedTitle = DOMPurify.sanitize(title);
+
+        const newT = document.createElement('div');
+        newT.classList.add('card');
+        newT.innerHTML = `
+        <h4><button class="tick"><i class="fa-regular fa-circle"></i></button>&ensp;${sanitizedTitle}</h4>
+        <div class="card-buttons">
+            <button><i class="fa-solid fa-circle-info"></i></button>
+            <button><i class="fa-solid fa-pen-to-square"></i></button>
+            <button><i class="fa-solid fa-trash"></i></button>
+        </div>
+        `
+        return newT;
+    }
+
     function displayProjects() {
         let list = projects.getProjectsList();
         projectsDiv.innerHTML = "";
         list.forEach(project => projectsDiv.appendChild(createProject(project.title)));
+    }
+
+    function displayTasks() {
+        let activeProject = projects.getActiveProject();
+        let list = activeProject.getTasks();
+        tasksDiv.innerHTML = "";
+        list.forEach(task => tasksDiv.appendChild(createTask(task.title)));
     }
 
     return {
@@ -56,6 +80,8 @@ const dom = (() => {
         addProject,
         createProject,
         displayProjects,
+        createTask,
+        displayTasks,
     }
 })();
 

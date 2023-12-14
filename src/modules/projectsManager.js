@@ -12,6 +12,11 @@ export const project = (title) => {
     let tasks = [];
     let active = false;
 
+    function tasksAppend(title, details, date, priority) {
+        const newTask = task(title, details, date, priority);
+        tasks.push(newTask);
+    }
+
     function getTasks() {
         return tasks;
     }
@@ -26,6 +31,7 @@ export const project = (title) => {
 
     return {
         title,
+        tasksAppend,
         getTasks,
         getActive,
         updateActive,
