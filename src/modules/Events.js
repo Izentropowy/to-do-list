@@ -49,6 +49,11 @@ const events = (() => {
                 if (oldActive != undefined) {
                     oldActive.updateActive();
                 }
+
+                const activeP = document.querySelectorAll('.project-active');
+                Array.from(activeP).forEach(btn => btn.classList.remove('project-active'));
+                e.target.classList.add('project-active');
+
                 project.updateActive();
                 dom.displayTasks();
             }
@@ -70,6 +75,14 @@ const events = (() => {
                 dom.createTask(title);
                 dom.displayTasks();
                 dom.closeModals();
+            }
+
+            // projectTrash
+            if (target.includes('project-remove')) {
+                let projectRemoved = e.target.parentNode.previousElementSibling.id;
+                projects.removeProject(projectRemoved);
+                dom.displayProjects();
+                console.log(projects.getProjectsList());
             }
         })
     }

@@ -33,13 +33,14 @@ const dom = (() => {
     }
 
     function createProject(title) {
+
         const sanitizedTitle = DOMPurify.sanitize(title);
 
         const newP = document.createElement('div');
         newP.classList.add('project');
         newP.innerHTML = `
         <button class="project-btn" id="${sanitizedTitle}">${sanitizedTitle}</button>
-        <button><i class="fa-solid fa-trash"></i></button>
+        <button><i class="fa-solid fa-trash project-remove"></i></button>
         `
         return newP;
     }
@@ -71,6 +72,11 @@ const dom = (() => {
         let list = activeProject.getTasks();
         tasksDiv.innerHTML = "";
         list.forEach(task => tasksDiv.appendChild(createTask(task.title)));
+        let addTaskButton = document.createElement('button');
+        addTaskButton.className = 'add-task';
+        addTaskButton.innerHTML = '<i class="fa-solid fa-plus"></i>&ensp;Add task';
+        
+        tasksDiv.appendChild(addTaskButton);
     }
 
     return {

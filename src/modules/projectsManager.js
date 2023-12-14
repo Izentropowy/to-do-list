@@ -46,6 +46,10 @@ export const projects = (() => {
         projectsList.push(newProject);
     }
 
+    function removeProject(title) {
+        projectsList = projectsList.filter(project => project.title !== title);
+    }
+    
     function getProjectsList() {
         return projectsList
     }
@@ -63,6 +67,7 @@ export const projects = (() => {
         getProjectsList,
         getActiveProject,
         getProject,
+        removeProject,
     }
 })();
 

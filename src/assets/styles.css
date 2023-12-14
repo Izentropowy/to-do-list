@@ -77,7 +77,6 @@ button:active {
   align-items: flex-start;
   gap: var(--pdg-v);
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
 .menu > * {
@@ -88,7 +87,9 @@ button:active {
 .projects {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap; 
   gap: var(--mrg);
+
 }
 
 .project {
@@ -98,10 +99,10 @@ button:active {
 }
 
 .project-btn {
-  color: var(--font-color);
+  color: var(--secondary-color);
   background-color: var(--main-color);
   border-radius: 15px;
-  font-weight: 800;
+  font-weight: 600;
   flex-grow: 1;
 }
 
@@ -207,6 +208,10 @@ textarea {
 
 .priority-active {
   font-weight: bold;
+}
+
+.project-active {
+  color: var(--font-color);
 }
 
 
