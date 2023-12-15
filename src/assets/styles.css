@@ -131,7 +131,7 @@ button:active {
   padding: 0;
 }
 
-.task-modal, .project-modal {
+.task-modal, .project-modal, .info-modal {
   display: none; /* Hidden by default */
   place-items: center;
   position: fixed; /* Stay in place */
@@ -145,13 +145,13 @@ button:active {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-form {
+form, .info-content {
   display: flex;
   flex-direction: column;
   gap: var(--mrg);
   max-width: 400px;
   background-color: var(--main-color);
-  padding: calc(3 * var(--pdg-v));
+  padding: calc(5 * var(--pdg-v));
   border-radius: 10px;
   position: relative;
 }
@@ -213,6 +213,27 @@ textarea {
 .project-active {
   color: var(--font-color);
 }
+
+.info-content {
+  width: 300px;
+}
+
+.info-content .category {
+  font-size: medium;
+}
+
+.fa-circle {
+  margin-right: 5px;
+}
+
+.category-info {
+  font-size: smaller;
+}
+
+.category-info-title {
+  font-size:larger;
+}
+
 
 
 @media screen and (max-width: 600px) {

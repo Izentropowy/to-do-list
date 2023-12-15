@@ -21,6 +21,10 @@ export const project = (title) => {
         return tasks;
     }
 
+    function getTask(title) {
+        return tasks.find(task => task.title === title);
+    }
+
     function getActive() {
         return active;
     }
@@ -33,6 +37,7 @@ export const project = (title) => {
         title,
         tasksAppend,
         getTasks,
+        getTask,
         getActive,
         updateActive,
     }

@@ -1,5 +1,5 @@
 import dom from './UI';
-import { projects } from './projectsManager';
+import { projects, task } from './projectsManager';
 
 
 
@@ -82,7 +82,13 @@ const events = (() => {
                 let projectRemoved = e.target.parentNode.previousElementSibling.id;
                 projects.removeProject(projectRemoved);
                 dom.displayProjects();
-                console.log(projects.getProjectsList());
+                dom.displayTasks();
+            }
+
+            // infoModal
+            if (target.includes('fa-circle-info')) {
+                dom.createInfo(e);
+                dom.toggleInfoModal();
             }
         })
     }
