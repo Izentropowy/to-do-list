@@ -107,6 +107,7 @@ const dom = (() => {
         detailsSpan.textContent = task.details;
         dateSpan.textContent = task.date;
         prioritySpan.textContent = task.priority;
+        console.log(task);
     }
 
     return {

@@ -234,7 +234,49 @@ textarea {
   font-size:larger;
 }
 
+.priorities {
+  display: flex;
+}
 
+/* Style for each radio button */
+.priority-checkbox {
+  display: none; /* Hide the actual radio buttons */
+}
+
+.priorities > label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Style for each radio button based on its value */
+#low-priority + label {
+  border: 1px solid green;
+}
+
+#medium-priority + label {
+  border: 1px solid yellow;
+}
+
+#high-priority + label {
+  border: 1px solid red;
+}
+
+#low-priority:checked + label {
+  background-color: green;
+}
+
+#medium-priority:checked + label {
+  background-color: yellow;
+}
+
+#high-priority:checked + label {
+  background-color: red;
+}
 
 @media screen and (max-width: 600px) {
   :root {

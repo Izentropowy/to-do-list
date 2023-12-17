@@ -39,11 +39,16 @@
                     <input type="date" id="date" name="date" value="2024-01-01" required/>
                 </div>
                 <div class="priorities">
-                    <label for="priority">Priority:</label>
-                    <button class="priority-btn" id="low-priority" type="button">Low</button>
-                    <button class="priority-btn" id="medium-priority" type="button">Medium</button>
-                    <button class="priority-btn" id="high-priority" type="button">High</button>
-                </div>
+                    <span>Priority:</span>
+                    <input type="radio" class="priority-checkbox" id="low-priority" name="priority" value="low">
+                    <label for="low-priority">Low</label>
+                  
+                    <input type="radio" class="priority-checkbox" id="medium-priority" name="priority" value="medium">
+                    <label for="medium-priority">Medium</label>
+                  
+                    <input type="radio" class="priority-checkbox" id="high-priority" name="priority" value="high">
+                    <label for="high-priority">High</label>
+                  </div>
                 <button class="submit task-submit" type="button">Add</button>   
             </form>
         </div>   
