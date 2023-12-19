@@ -1,15 +1,12 @@
 import dom from './UI';
-import { projects, task } from './projectsManager';
+import { projects } from './projectsManager';
 
 
 
 const events = (() => {
 
-    const priorityButtons = document.querySelectorAll('.priority-checkbox');
-    const taskForm = document.querySelector('.task-form');
-
     function listenClicks() {
-
+        let activeTask;
         document.addEventListener('click', e => {
             let target = e.target.getAttribute("class");
 
@@ -59,36 +56,14 @@ const events = (() => {
                 dom.displayTasks();
             }
 
-            // priorityButton
-            if (target.includes('priority-checkbox')) {
-                console.log('checkbox');
-                Array.from(priorityButtons).forEach(btn => {
-                    btn.classList.remove('priority-active');
-                    if (btn.checked) {
-                        btn.classList.add('priority-active');
-                    }
-                });
-            }
-
             // taskFormSubmit
             if (target.includes('task-submit')) {
-                e.target.setCustomValidity("This field cannot be left blank");
-                if (taskForm.reportValidity()){
-                    // validate priority buttons
-                    if (document.querySelector('.priority-active') !== null) {
-                        let title = document.getElementById('task-title').value;
-                        let details = document.getElementById('details').value;
-                        let date = document.getElementById('date').value;
-                        let priority = document.querySelector('.priority-active').id;
-        
-                        
-                        projects.getActiveProject().tasksAppend(title, details, date, priority);
-                        dom.createTask(title);
-                        dom.displayTasks();
-                        dom.closeModals();
-                        taskForm.reset();
-                    }
-                }
+                dom.validateTaskForm();
+            }
+
+            // editFormSubmit
+            if (target.includes('edit-submit')) {
+                dom.validateEditForm(activeTask);
             }
 
             // projectTrash
@@ -101,8 +76,16 @@ const events = (() => {
 
             // infoModal
             if (target.includes('fa-circle-info')) {
-                dom.createInfo(e);
+                activeTask = dom.getActiveTask(e);
+                dom.createInfo(activeTask);
                 dom.toggleInfoModal();
+            }
+
+            // editModal
+            if (target.includes('fa-pen-to-square')) {
+                activeTask = dom.getActiveTask(e);
+                dom.createEdit(activeTask);
+                dom.toggleEditModal();
             }
         })
     }

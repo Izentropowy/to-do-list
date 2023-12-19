@@ -1,5 +1,6 @@
 
 export const task = (title, details, date, priority) => {
+
     return {
         title,
         details,

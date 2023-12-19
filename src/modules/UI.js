@@ -5,14 +5,23 @@ const dom = (() => {
     const taskModal = document.querySelector('.task-modal');
     const projectModal = document.querySelector('.project-modal');
     const infoModal = document.querySelector('.info-modal');
+    const editModal = document.querySelector('.edit-modal');
     const projectForm = document.querySelector('.project-form');
     const projectsDiv = document.querySelector('.projects');
     const tasksDiv = document.querySelector('.tasks');
+    const taskForm = document.querySelector('.task-form');
+    const priorityButtons = document.querySelectorAll('.priority-checkbox');
 
     const titleSpan = document.querySelector('.category-info-title');
     const detailsSpan = document.querySelector('.category-info-details');
     const dateSpan = document.querySelector('.category-info-date');
     const prioritySpan = document.querySelector('.category-info-priority');
+
+    const editForm = document.querySelector('.edit-form');
+    const editTitle = document.getElementById('edit-title');
+    const editDetails = document.getElementById('edit-details');
+    const editDate = document.getElementById('edit-date');
+    const editPriorityButtons = document.querySelectorAll('.edit-priority-checkbox');
 
     function toggleTaskModal() {
         taskModal.style.display = getComputedStyle(taskModal).display == 'none' ? 'grid' : 'none';
@@ -27,10 +36,15 @@ const dom = (() => {
         infoModal.style.display = getComputedStyle(infoModal).display == 'none' ? 'grid' : 'none';
     }
 
+    function toggleEditModal() {
+        editModal.style.display = getComputedStyle(editModal).display == 'none' ? 'grid' : 'none';
+    }
+
     function closeModals() {
         taskModal.style.display = 'none';
         projectModal.style.display = 'none';
         infoModal.style.display = 'none';
+        editModal.style.display = 'none';
     }
 
     function addProject() {
@@ -98,16 +112,74 @@ const dom = (() => {
         tasksDiv.appendChild(addTaskButton);
     }
 
-    function createInfo(e) {
-        let taskTitle = e.target.parentNode.parentNode.previousElementSibling.textContent;
-        let activeP = projects.getActiveProject();
-        let task = activeP.getTask(taskTitle);
-        
+    function createInfo(task) {
         titleSpan.textContent = task.title;
         detailsSpan.textContent = task.details;
         dateSpan.textContent = task.date;
         prioritySpan.textContent = task.priority;
-        console.log(task);
+    }
+
+    function createEdit(task) {
+        editTitle.value = task.title;
+        editDetails.value = task.details;
+        editDate.value = task.date;
+        let priority = task.priority;
+        Array.from(editPriorityButtons).forEach(btn => {
+            if (btn.value === priority) {
+                btn.checked = true;
+                return;
+            }
+        });
+
+    }
+
+    function findChecked(buttons) {
+        let checked;
+        Array.from(buttons).forEach(btn => {
+            if (btn.checked === true) {
+                checked = btn.value;
+                return;
+            }
+        });
+        return checked;
+    }
+
+    function getActiveTask(e) {
+        let taskTitle = e.target.parentNode.parentNode.previousElementSibling.textContent;
+        let activeP = projects.getActiveProject();
+        let task = activeP.getTask(taskTitle);
+
+        return task;
+    }
+
+    function validateTaskForm() {
+        if (taskForm.reportValidity()){
+            let title = document.getElementById('task-title').value;
+            let details = document.getElementById('details').value;
+            let date = document.getElementById('date').value;
+            let priority = findChecked(priorityButtons);
+            projects.getActiveProject().tasksAppend(title, details, date, priority);
+            dom.createTask(title);
+            dom.displayTasks();
+            dom.closeModals();
+            taskForm.reset();
+        }
+    }
+
+    function validateEditForm(task) {
+        if (editForm.reportValidity()){
+            let title = document.getElementById('edit-title').value;
+            let details = document.getElementById('edit-details').value;
+            let date = document.getElementById('edit-date').value;
+            let priority = findChecked(editPriorityButtons);
+
+            task.title = title;
+            task.details = details;
+            task.date = date;
+            task.priority = priority;
+            dom.displayTasks();
+            dom.closeModals();
+        }
     }
 
     return {
@@ -121,6 +193,11 @@ const dom = (() => {
         createTask,
         displayTasks,
         createInfo,
+        createEdit,
+        toggleEditModal,
+        validateTaskForm,
+        validateEditForm,
+        getActiveTask,
     }
 })();
 

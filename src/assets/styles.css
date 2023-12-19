@@ -131,7 +131,7 @@ button:active {
   padding: 0;
 }
 
-.task-modal, .project-modal, .info-modal {
+.task-modal, .project-modal, .info-modal, .edit-modal {
   display: none; /* Hidden by default */
   place-items: center;
   position: fixed; /* Stay in place */
@@ -239,8 +239,10 @@ textarea {
 }
 
 /* Style for each radio button */
-.priority-checkbox {
-  display: none; /* Hide the actual radio buttons */
+.priority-checkbox, .edit-priority-checkbox { 
+  position: fixed;
+  opacity: 0;
+  pointer-events: none; /* Hide the actual radio buttons */
 }
 
 .priorities > label {
@@ -254,27 +256,27 @@ textarea {
 }
 
 /* Style for each radio button based on its value */
-#low-priority + label {
+.low-priority + label {
   border: 1px solid green;
 }
 
-#medium-priority + label {
+.medium-priority + label {
   border: 1px solid yellow;
 }
 
-#high-priority + label {
+.high-priority + label {
   border: 1px solid red;
 }
 
-#low-priority:checked + label {
+.low-priority:checked + label {
   background-color: green;
 }
 
-#medium-priority:checked + label {
+.medium-priority:checked + label {
   background-color: yellow;
 }
 
-#high-priority:checked + label {
+.high-priority:checked + label {
   background-color: red;
 }
 

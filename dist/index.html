@@ -40,15 +40,15 @@
                 </div>
                 <div class="priorities">
                     <span>Priority:</span>
-                    <input type="radio" class="priority-checkbox" id="low-priority" name="priority" value="low">
+                    <input type="radio" class="priority-checkbox low-priority" id="low-priority" name="priority" value="low" required>
                     <label for="low-priority">Low</label>
                   
-                    <input type="radio" class="priority-checkbox" id="medium-priority" name="priority" value="medium">
+                    <input type="radio" class="priority-checkbox medium-priority" id="medium-priority" name="priority" value="medium">
                     <label for="medium-priority">Medium</label>
                   
-                    <input type="radio" class="priority-checkbox" id="high-priority" name="priority" value="high">
+                    <input type="radio" class="priority-checkbox high-priority" id="high-priority" name="priority" value="high">
                     <label for="high-priority">High</label>
-                  </div>
+                </div>
                 <button class="submit task-submit" type="button">Add</button>   
             </form>
         </div>   
@@ -83,6 +83,35 @@
                 <span class="category">Details:</span>
                 <span class="category-info category-info-details"></span>
             </div>
+        </div>   
+    </div>
+    <div class="edit-modal">
+        <div class="modal-content">
+            <form class="edit-form">
+                <button class="close-button" type="button"><i class="fa-solid fa-x" style="color: #ffffff;"></i></button>
+                <div class="textareas">
+                    <label for="title">Title</label>
+                    <textarea type="text" id="edit-title" name="title" rows="1" placeholder="Task title" required></textarea>
+                    <label for="details">Details</label>
+                    <textarea id="edit-details" name="details" rows="10" placeholder="Notes here..." required></textarea>
+                </div>
+                <div class="date">
+                    <label for="date">Due date:</label>
+                    <input type="date" id="edit-date" name="date" value="2024-01-01" required/>
+                </div>
+                <div class="priorities">
+                    <span>Priority:</span>
+                    <input type="radio" class="edit-priority-checkbox low-priority" id="edit-low-priority" name="priority" value="low" required>
+                    <label for="edit-low-priority">Low</label>
+                  
+                    <input type="radio" class="edit-priority-checkbox medium-priority" id="edit-medium-priority" name="priority" value="medium">
+                    <label for="edit-medium-priority">Medium</label>
+                  
+                    <input type="radio" class="edit-priority-checkbox high-priority" id="edit-high-priority" name="priority" value="high">
+                    <label for="edit-high-priority">High</label>
+                </div>
+                <button class="submit edit-submit" type="button">Edit</button>   
+            </form>
         </div>   
     </div>
 </body>
