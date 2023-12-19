@@ -87,6 +87,18 @@ const events = (() => {
                 dom.createEdit(activeTask);
                 dom.toggleEditModal();
             }
+
+            // taskTrash
+            if (target.includes('task-remove')) {
+                activeTask = dom.getActiveTask(e);
+                console.log(activeTask);
+                projects.getActiveProject().removeTask(activeTask);
+                dom.displayTasks();
+            }
+
+            if (target.includes('fa-circle')) {
+                console.log(e.target);
+            }
         })
     }
 

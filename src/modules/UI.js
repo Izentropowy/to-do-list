@@ -81,7 +81,7 @@ const dom = (() => {
         <div class="card-buttons">
             <button><i class="fa-solid fa-circle-info"></i></button>
             <button><i class="fa-solid fa-pen-to-square"></i></button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <button><i class="fa-solid fa-trash task-remove"></i></button>
         </div>
         `
 

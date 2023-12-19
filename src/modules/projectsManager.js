@@ -18,6 +18,10 @@ export const project = (title) => {
         tasks.push(newTask);
     }
 
+    function removeTask(removedTask) {
+        tasks = tasks.filter(task => task !== removedTask);
+    }
+
     function getTasks() {
         return tasks;
     }
@@ -37,6 +41,7 @@ export const project = (title) => {
     return {
         title,
         tasksAppend,
+        removeTask,
         getTasks,
         getTask,
         getActive,
