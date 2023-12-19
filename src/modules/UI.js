@@ -71,11 +71,12 @@ const dom = (() => {
         return newP;
     }
 
-    function createTask(title) {
+    function createTask(title, priority) {
         const sanitizedTitle = DOMPurify.sanitize(title);
 
         const newT = document.createElement('div');
         newT.classList.add('card');
+        newT.classList.add(`${priority}`);
         newT.innerHTML = `
         <h4><button class="tick"><i class="fa-regular fa-circle"></i></button>${sanitizedTitle}</h4>
         <div class="card-buttons">
@@ -104,7 +105,7 @@ const dom = (() => {
 
         let list = activeProject.getTasks();
         tasksDiv.innerHTML = "";
-        list.forEach(task => tasksDiv.appendChild(createTask(task.title)));
+        list.forEach(task => tasksDiv.appendChild(createTask(task.title, task.priority)));
         let addTaskButton = document.createElement('button');
         addTaskButton.className = 'add-task';
         addTaskButton.innerHTML = '<i class="fa-solid fa-plus"></i>&ensp;Add task';

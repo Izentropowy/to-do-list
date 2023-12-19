@@ -122,6 +122,18 @@ button:active {
   align-items: center;
 }
 
+.card.low {
+  border: 1px solid green;
+}
+
+.card.medium {
+  border: 1px solid yellow;
+}
+
+.card.high {
+  border: 1px solid red;
+}
+
 .card h4 {
   white-space: nowrap;
   overflow: auto;
