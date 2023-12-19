@@ -96,8 +96,8 @@ const events = (() => {
                 dom.displayTasks();
             }
 
-            if (target.includes('fa-circle')) {
-                console.log(e.target);
+            if (target.includes('fa-regular')) {
+                dom.toggleTaskStatus(e.target);
             }
         })
     }

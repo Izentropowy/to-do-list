@@ -182,6 +182,21 @@ const dom = (() => {
         }
     }
 
+    function toggleTaskStatus(target) {
+        let card = target.closest('.card')
+        if (target.classList.contains('fa-circle')) {
+            target.classList.remove('fa-circle');
+            target.classList.add('fa-check-circle');
+            card.style.opacity = 0.5;
+        } 
+        else {
+            target.classList.remove('fa-check-circle');
+            target.classList.add('fa-circle');
+            card.style.opacity = 1;
+        }
+        
+    }
+
     return {
         toggleTaskModal,
         toggleProjectModal,
@@ -198,6 +213,7 @@ const dom = (() => {
         validateTaskForm,
         validateEditForm,
         getActiveTask,
+        toggleTaskStatus,
     }
 })();
 

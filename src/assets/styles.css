@@ -222,7 +222,7 @@ textarea {
   font-size: medium;
 }
 
-.fa-circle {
+.fa-circle, .fa-check-circle {
   margin-right: 5px;
 }
 
